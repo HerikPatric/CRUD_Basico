@@ -13,6 +13,7 @@ public class Department implements Serializable {
         Id = id;
         this.name = name;
     }
+    public Department(){}
 
     public Integer getId() {
         return Id;
