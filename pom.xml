@@ -7,6 +7,10 @@
   <name>Archetype - Projeto_CRUD</name>
   <url>http://maven.apache.org</url>
   <dependencies>
-
+    <dependency>
+      <groupId>org.mariadb.jdbc</groupId>
+      <artifactId>mariadb-java-client</artifactId>
+      <version>3.3.3</version>
+    </dependency>
   </dependencies>
 </project>
