@@ -6,11 +6,7 @@ import model.dao.SellerDAO;
 import model.entities.Department;
 import model.entities.Seller;
 
-import javax.xml.crypto.Data;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -83,7 +79,24 @@ public class SellerDaoJDBC implements SellerDAO {
 
     @Override
     public List<Seller> findAll() {
-        return null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try{
+            st = conn.prepareStatement("SELECT * FROM seller");
+            rs = st.executeQuery();
+            List<Seller> list = new ArrayList<>();
+            while (rs.next()) {
+                Seller seller = new Seller();
+                seller.setId(rs.getInt("Id"));
+                seller.setName(rs.getString("Name"));
+                seller.setEmail(rs.getString("Email"));
+                seller.setBaseSalary(rs.getDouble("BaseSalary"));
+                list.add(seller);
+            }
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
