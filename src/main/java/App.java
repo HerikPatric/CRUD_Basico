@@ -29,5 +29,11 @@ public class App {
         Seller newSeller =  new Seller(null,"Robinho","robinho@binho",data,5000.00,department);
         //sellerDAO.insert(newSeller);
        //System.out.println("Inserted! new id: " + newSeller.getId());
+        System.out.println("\n=== TESTE 5: Seller update ===");
+        seller =  sellerDAO.findById(1);
+        seller.setEmail("richard@wagner.mail");
+        sellerDAO.update(seller);
+        System.out.println("UPDATE COMPLETED!");
+
     }
 }
