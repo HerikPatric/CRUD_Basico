@@ -9,10 +9,12 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
         Date data = new Date();
         SellerDAO sellerDAO = DaoFactory.createSellerDAO();
         System.out.println("=== TESTE 1: Seller findById ===");
@@ -34,6 +36,12 @@ public class App {
         seller.setEmail("richard@wagner.mail");
         sellerDAO.update(seller);
         System.out.println("UPDATE COMPLETED!");
+        System.out.println("\n=== TESTE 6: Seller delete ===");
+        System.out.println("Enter id for the delete test:");
+        int id = sc.nextInt();
+        sellerDAO.deleteById(id);
+        System.out.println("Delete completed! ID Deleted: " + id);
+
 
     }
 }
